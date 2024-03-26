@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:movie_task/data/model/top_rated_response.dart';
 import 'package:movie_task/ui/screens/details_screen/details_screen.dart';
-import 'package:movie_task/ui/utils/app_assets.dart';
+import 'package:movie_task/ui/utils/constants.dart';
 
 class FilmItem extends StatelessWidget {
-  const FilmItem({super.key});
+  Results results;
+
+  FilmItem({required this.results, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class FilmItem extends StatelessWidget {
         Navigator.pushNamed(context, DetailsScreen.routeName);
       },
       child: Container(
-        height: MediaQuery.of(context).size.height * .18,
+        height: MediaQuery.of(context).size.height * .22,
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
@@ -28,8 +31,8 @@ class FilmItem extends StatelessWidget {
                 flex: 2,
                 child: Container(
                   margin: const EdgeInsets.all(10),
-                  child: Image.asset(
-                    AppAssets.icSplash,
+                  child: Image.network(
+                    "${Constants.imagePath}${results.posterPath}",
                     fit: BoxFit.fill,
                   ),
                 )),
@@ -40,10 +43,10 @@ class FilmItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const SizedBox(height: 12),
-                      const Text("Film name"),
+                      const SizedBox(height: 4),
+                      Text(results.title ?? ""),
                       const SizedBox(height: 8),
-                      const Text("Film desc"),
+                      Text(results.overview ?? "",maxLines: 2),
                       Row(
                         children: [
                           const Icon(
@@ -51,15 +54,17 @@ class FilmItem extends StatelessWidget {
                             size: 30,
                             color: Colors.yellow,
                           ),
-                          Text("8.88",
+                          Text(results.voteAverage.toString(),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(color: Colors.blueAccent))
                         ],
                       ),
-                      const Text(
-                        "12-12-3349",
+                      Text(
+                        results.releaseDate ?? "",
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Colors.grey.shade500, fontSize: 16),
                         textAlign: TextAlign.right,
                       ),
                     ],

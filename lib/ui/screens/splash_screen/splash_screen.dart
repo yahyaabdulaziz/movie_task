@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_task/screens/home_screen/home_screen.dart';
-import 'package:movie_task/utils/app_assets.dart';
+import 'package:movie_task/ui/screens/home_screen/home_screen.dart';
+import 'package:movie_task/ui/utils/app_assets.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = "SplashScreen";

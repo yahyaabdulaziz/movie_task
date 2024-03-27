@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movie_task/ui/screens/details_screen/details_screen.dart';
-import 'package:movie_task/ui/screens/home_screen/home_screen.dart';
-import 'package:movie_task/ui/screens/splash_screen/splash_screen.dart';
+import 'package:movie_task/domain/di/di.dart';
+import 'package:movie_task/presentation/screens/details_screen/details_screen.dart';
+import 'package:movie_task/presentation/screens/home_screen/home_screen.dart';
+import 'package:movie_task/presentation/screens/splash_screen/splash_screen.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
